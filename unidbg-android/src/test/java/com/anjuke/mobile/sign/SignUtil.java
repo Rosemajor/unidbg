@@ -24,6 +24,7 @@ public class SignUtil {
     private final DvmClass cSignUtil;
     private final VM vm;
 
+
     public SignUtil() {
         emulator = AndroidEmulatorBuilder.for32Bit()
                 .setProcessName("com.anjuke.android.app")
