@@ -40,12 +40,12 @@ public class BitmapkitUtils extends AbstractJni {
 
         memory = emulator.getMemory(); // 模拟器的内存操作接口
         memory.setLibraryResolver(new AndroidResolver(23));// 设置系统类库解析
-
-        vm = emulator.createDalvikVM(new File("C:\\Users\\Davide\\Downloads\\unidbg-0.9.7\\unidbg-0.9.7\\unidbg-android\\src\\test\\resources\\jdd_so\\jdd_.apk"));
+        vm = emulator.createDalvikVM(new File("unidbg-android/src/test/resources/jdd_so/jdd_A.apk"));
         vm.setVerbose(true);
         vm.setJni(this);
 
-        DalvikModule dalvikModule = vm.loadLibrary(new File("C:\\\\Users\\\\Davide\\\\Downloads\\\\unidbg-0.9.7\\\\unidbg-0.9.7\\\\unidbg-android\\\\src\\\\test\\\\resources\\\\jdd_so\\\\libjdbitmapkit.so"), false);
+//        DalvikModule dalvikModule = vm.loadLibrary(new File("C:\\\\Users\\\\Davide\\\\Downloads\\\\unidbg-0.9.7\\\\unidbg-0.9.7\\\\unidbg-android\\\\src\\\\test\\\\resources\\\\jdd_so\\\\libjdbitmapkit.so"), false);
+        DalvikModule dalvikModule = vm.loadLibrary(new File("unidbg-android/src/test/resources/jdd_so/libjdbitmapkit.so"), false);
         module = dalvikModule.getModule();
 
         vm.callJNI_OnLoad(emulator,module);
