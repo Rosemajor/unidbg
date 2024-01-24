@@ -72,6 +72,8 @@ int UIApplicationMain(int argc, char *argv[], NSString *principalClassName, NSSt
     [carrier setCarrierName: [_carrierName retain]];
   }
 
+  NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+  [userDefault setBool: YES forKey: @"NSFileCoordinatorDoesNothing"];
   NSNumber *callFinishLaunchingWithOptions = dict[@"callFinishLaunchingWithOptions"];
   if(delegate && [callFinishLaunchingWithOptions boolValue]) {
     UIApplication *application;
@@ -173,6 +175,9 @@ const CGRect g_frame = { 0, 0, 768, 1024 };
     return [UIColor new];
 }
 - (UIColor *)initWithWhite:(CGFloat)white alpha:(CGFloat)alpha {
+    return [UIColor new];
+}
+- (UIColor *)initWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha {
     return [UIColor new];
 }
 @end
@@ -305,6 +310,7 @@ static UIApplication *sharedApplication;
 }
 
 - (void)registerForRemoteNotifications {
+    NSLog(@"registerForRemoteNotifications delegate=%@", delegate);
 }
 
 - (BOOL)sendAction:(SEL)action to:(id)target from:(id)sender forEvent:(UIEvent *)event {
@@ -449,6 +455,11 @@ static UIApplication *sharedApplication;
 
 @implementation NSDateFormatter (Foundation)
 - (void)setLocalizedDateFormatFromTemplate:(NSString *)dateFormatTemplate {
+}
+@end
+@implementation NSKeyedArchiver (Foundation)
+- (id)initRequiringSecureCoding:(BOOL)requiresSecureCoding {
+    return nil;
 }
 @end
 #pragma clang diagnostic pop
